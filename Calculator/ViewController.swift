@@ -30,8 +30,11 @@ class ViewController: UIViewController {
 
     @IBAction func pushDigit(sender: UIButton) {
         let digit = sender.currentTitle!
+        if (digit != "." || display.text?.rangeOfString(digit) == nil){
         
-        display.text = display.text == "0" ? digit : display.text! + digit
+        
+        display.text = display.text == "0" && digit != "." ? digit : display.text! + digit
+        }
     }
     
     @IBAction func pushOperator(sender: UIButton) {
