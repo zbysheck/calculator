@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     var numba: Double = 0.0
     var operation: String = "."
+    let brain: CalculatorBrain = CalculatorBrain()
     
     
     var displayValue: Double {
@@ -34,13 +35,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pushOperator(sender: UIButton) {
-        operation = sender.currentTitle!
-        numba = displayValue
+        brain.operation = sender.currentTitle!
+        brain.numba = displayValue
         display.text = "0"
         
     }
     
     @IBAction func compute() {
+        brain.numba2 = displayValue
+        displayValue = brain.calculate()
+        /*
         switch operation {
         case "+": displayValue = displayValue + numba
         case "-": displayValue = -displayValue + numba
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
         case "/": displayValue = numba/displayValue
         default: displayValue = 0.0
             
-        }
+        }*/
     }
     @IBAction func clear(sender: AnyObject) {
         display.text = "0"
